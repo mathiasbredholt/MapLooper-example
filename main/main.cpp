@@ -15,8 +15,8 @@ main
 */
 
 #include "MapLooper/MapLooper.hpp"
+#include "esp_event.h"
 #include "esp_ota_ops.h"
-#include "esp_event_loop.h"
 #include "freertos/task.h"
 #include "nvs_flash.h"
 #include "protocol_examples_common.h"
@@ -24,8 +24,7 @@ main
 static const char* TAG = "main";
 
 void mapLooperTask(void* user_param) {
-  mpr_dev dev = mpr_dev_new("MapLooper", NULL);
-  MapLooper::MapLooper* app = new MapLooper::MapLooper(&dev);
+  MapLooper::MapLooper* app = new MapLooper::MapLooper();
   while (true) {
     app->update();
     portYIELD();
