@@ -2,5 +2,5 @@
 
 # MapLooper-example
 
-## Information
+## Info
 https://github.com/mathiasbredholt/MapLooper
