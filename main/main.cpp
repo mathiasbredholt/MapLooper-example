@@ -23,14 +23,6 @@ main
 
 static const char* TAG = "main";
 
-void mapLooperTask(void* user_param) {
-  MapLooper::MapLooper* app = new MapLooper::MapLooper();
-  while (true) {
-    app->update();
-    portYIELD();
-  }
-}
-
 extern "C" void app_main() {
   ESP_LOGI(TAG, "MapLooper v%s", esp_ota_get_app_description()->version);
   ESP_LOGI(TAG, "(c) Mathias Bredholt 2020");
@@ -41,5 +33,8 @@ extern "C" void app_main() {
   ESP_ERROR_CHECK(esp_event_loop_create_default());
   ESP_ERROR_CHECK(example_connect());
 
-  xTaskCreate(mapLooperTask, "MapLooper", 4096, NULL, 10, NULL);
+  MapLooper::MapLooper* mapLooper = new MapLooper::MapLooper();
+  mapLooper->addSignal(
+      "gate", 0, 1, [](int trackId, const std::string& path, float value) {});
+  vTaskDelete(NULL);
 }

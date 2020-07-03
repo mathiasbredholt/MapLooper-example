@@ -1,6 +1,3 @@
-[submodule "components/blemidi-idf"]
-	path = components/blemidi-idf
-	url = https://github.com/mathiasbredholt/blemidi-idf.git
 [submodule "components/link-idf"]
 	path = components/link-idf
 	url = https://github.com/mathiasbredholt/link-idf.git
