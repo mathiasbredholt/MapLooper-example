@@ -12,6 +12,7 @@ https://github.com/mathiasbredholt/MapLooper
 git clone --recursive https://github.com/mathiasbredholt/MapLooper-example.git
 ```
 * Acivate idf.py [environment](https://docs.espressif.com/projects/esp-idf/en/release-v4.2/esp32/get-started/index.html#step-4-set-up-the-environment-variables)
+* Accesss configuration through `idf.py menuconfig` and enter WiFi credentials through `Example Connection Configuration`
 * Flash with
 ```
 idf.py flash
