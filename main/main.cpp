@@ -49,20 +49,16 @@ extern "C" void app_main() {
 
   MapLooper::MapLooper* mapLooper = new MapLooper::MapLooper();
 
-  MapLooper::Loop* loop =
-      mapLooper->createLoop("test", MPR_FLT, 1, "slider1", "in/slider2");
-  loop->mapMixTo("button1");
+  // MapLooper::Loop* loop = mapLooper->createLoop("test", MPR_FLT, 1);
 
   xTaskCreate(
       [](void* userParam) {
         MapLooper::MapLooper* m =
             reinterpret_cast<MapLooper::MapLooper*>(userParam);
         for (;;) {
-          m->update();
+          m->update(0);
           vTaskDelay(1);
         }
       },
       "MapLooper", 16384, mapLooper, 3, nullptr);
-
-  vTaskDelay(portMAX_DELAY);
 }
