@@ -49,7 +49,11 @@ extern "C" void app_main() {
 
   MapLooper::MapLooper* mapLooper = new MapLooper::MapLooper();
 
-  // MapLooper::Loop* loop = mapLooper->createLoop("test", MPR_FLT, 1);
+  MapLooper::Loop* loop = mapLooper->createLoop("loop", MPR_FLT, 1);
+  loop->mapInput("out/slider1");
+  loop->mapOutput("in/slider2");
+  loop->mapModulation("out/slider3");
+  loop->mapMix("out/button1");
 
   xTaskCreate(
       [](void* userParam) {
